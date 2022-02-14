@@ -40,60 +40,60 @@ class RegisterActivity : BaseActivity() {
 
         val btnRegister: Button = findViewById(R.id.button2)
         btnRegister.setOnClickListener {
-//            registerUser()
+            registerUser()
             Toast.makeText(this, "Hi", Toast.LENGTH_LONG).show()
         }
     }
 
-//    private fun validateRegisterDetails(): Boolean{
-//
-//        return when{
-//            textName.text.toString().isEmpty() ->{
-//                showErrorSnackBar(resources.getString(R.string.error_msg_enter_first_name), true)
-//                false
-//            }
-//            else -> {
-//                showErrorSnackBar(resources.getString(R.string.registerSuccess), false)
-//                true
-//            }
-//        }
-//    }
-//
-//    private fun registerUser(){
-//
-//        // Check with validate function if the entries are valid or not.
-//        if(validateRegisterDetails())
-//        {
-//            val emailText: String =  email.text.toString().trim(){
-//                it <= ' '
-//            }
-//            val passwordText: String = password.text.toString().trim{
-//                it <= ' '
-//            }
-//
-//            // Create an instance and create a register a user with email and password.
-//            FirebaseAuth.getInstance().createUserWithEmailAndPassword(emailText, passwordText)
-//                .addOnCompleteListener(
-//                    OnCompleteListener<AuthResult> {
-//                        task ->
-//                        // If the registration is successfully done
-//                        if(task.isSuccessful){
-//                            //Firebase registered user
-//                            val firebaseUser: FirebaseUser = task.result!!.user!!
-//
-//                            showErrorSnackBar(
-//                                "You are registered successfully. Your user id is ${firebaseUser.uid}",
-//                                false
-//                            )
-//                        }
-//                        else{
-//                            // If the registering is not successful then show error message.
-//                            showErrorSnackBar(task.exception!!.message.toString(), true)
-//                        }
-//                    }
-//
-//                )
-//        }
-//    }
+    private fun validateRegisterDetails(): Boolean{
+
+        return when{
+            textName.text.toString().isEmpty() ->{
+                showErrorSnackBar(resources.getString(R.string.error_msg_enter_first_name), true)
+                false
+            }
+            else -> {
+                showErrorSnackBar(resources.getString(R.string.registerSuccess), false)
+                true
+            }
+        }
+    }
+
+    private fun registerUser(){
+
+        // Check with validate function if the entries are valid or not.
+        if(validateRegisterDetails())
+        {
+            val emailText: String =  email.text.toString().trim(){
+                it <= ' '
+            }
+            val passwordText: String = password.text.toString().trim{
+                it <= ' '
+            }
+
+            // Create an instance and create a register a user with email and password.
+            FirebaseAuth.getInstance().createUserWithEmailAndPassword(emailText, passwordText)
+                .addOnCompleteListener(
+                    OnCompleteListener<AuthResult> {
+                        task ->
+                        // If the registration is successfully done
+                        if(task.isSuccessful){
+                            //Firebase registered user
+                            val firebaseUser: FirebaseUser = task.result!!.user!!
+
+                            showErrorSnackBar(
+                                "You are registered successfully. Your user id is ${firebaseUser.uid}",
+                                false
+                            )
+                        }
+                        else{
+                            // If the registering is not successful then show error message.
+                            showErrorSnackBar(task.exception!!.message.toString(), true)
+                        }
+                    }
+
+                )
+        }
+    }
 
 }
